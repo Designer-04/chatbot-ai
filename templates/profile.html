@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="profile-grid">
+  <div class="card">
+    <h3>Profile</h3>
+    <form method="post" action="{{ url_for('profile') }}">
+      <label>Display name</label>
+      <input name="display_name" value="{{ user.display_name }}" />
+      <label>Theme</label>
+      <select name="theme">
+        <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>Dark (Hacker)</option>
+        <option value="light" {% if user.theme=='light' %}selected{% endif %}>Light</option>
+      </select>
+      <div style="margin-top:12px">
+        <button class="btn primary" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+  <div class="card">
+    <h3>Danger Zone</h3>
+    <p>Logout when done. Use strong passwords and don't share API keys.</p>
+  </div>
+</div>
+{% endblock %}

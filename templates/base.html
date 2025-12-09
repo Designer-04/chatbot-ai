@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ title or "Gama  Chat" }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Libre+Franklin:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="{{ current_user.theme if current_user.is_authenticated else 'dark' }}">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-led"></span>
+      Gama Chat
+      <small class="sub">Terminal • AI </small>
+    </div>
+    <div class="top-actions">
+      {% if current_user.is_authenticated %}
+        <span class="greet">Hi, <strong>{{ current_user.display_name }}</strong></span>
+        <a class="link" href="{{ url_for('profile') }}">Profile</a>
+        <a class="link" href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a class="link" href="{{ url_for('login') }}">Login</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flashwrap">
+          {% for cat, msg in messages %}
+            <div class="flash {{ cat }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/static/script.js"></script>
+  <script src="{{ url_for('static', filename='upload.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* BASIC */
+:root{
+  --bg-dark:#05060a;
+  --panel:#081221;
+  --neon:#00f6ff;
+  --accent:#21f08a;
+  --muted:#9aa6b2;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Libre Franklin, "JetBrains Mono", system-ui, -apple-system; background:var(--bg-dark); color:#dbe9f5}
+
+/* TOPBAR */
+.topbar{height:64px;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent)}
+.brand{font-weight:700;display:flex;align-items:center;gap:10px}
+.logo-led{width:10px;height:10px;background:linear-gradient(90deg,#00f6ff,#21f08a);border-radius:3px;box-shadow:0 0 10px rgba(0,246,255,0.2)}
+.top-actions .link{color:var(--neon);margin-left:12px;text-decoration:none}
+
+/* CONTAINER */
+.container{padding:14px}
+.app-grid{display:flex;gap:16px;height:calc(100vh - 110px)}
+
+/* SIDEBAR */
+.sidebar{width:300px;background:linear-gradient(180deg,#04101a,#021018);border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+.side-top{margin-bottom:12px}
+.btn{padding:10px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+.btn.neon{background:linear-gradient(90deg,#00121a,#002b3a);color:var(--neon);box-shadow:0 6px 20px rgba(0,246,255,0.05)}
+.chat-list{margin-top:8px;overflow:auto;flex:1;padding-right:6px}
+.chat-item{padding:10px;border-radius:8px;background:rgba(255,255,255,0.01);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.chat-item .meta button{margin-left:6px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:6px;border-radius:6px;cursor:pointer}
+.side-footer{margin-top:10px;color:var(--muted);font-size:13px}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column}
+.chat-header{padding:14px}
+.chat-window{flex:1;background:linear-gradient(180deg,#07111a,#0b1b26);border-radius:12px;padding:18px;overflow:auto;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.messages{display:flex;flex-direction:column;gap:12px}
+
+/* MESSAGE BUBBLES */
+.message{max-width:70%;padding:12px;border-radius:12px;line-height:1.45;box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+.msg-user{align-self:flex-end;background:linear-gradient(90deg,#0b76ff,#0046ff);color:white;border-bottom-right-radius:6px}
+.msg-bot{align-self:flex-start;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); color:#cfe8ff; border-bottom-left-radius:6px; border:1px solid rgba(255,255,255,0.02)}
+.msg-meta{font-size:11px;color:var(--muted);margin-top:6px;text-align:right}
+
+/* composer */
+.composer{display:flex;gap:10px;padding:12px;align-items:flex-end}
+#message-input{flex:1;min-height:44px;max-height:180px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#dff2ff;outline:none;resize:none;font-family:inherit}
+.send{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,#00f6ff,#21f08a);color:#001219;font-weight:700;cursor:pointer}
+
+/* AUTH PANEL */
+.auth-wrap{display:flex;gap:18px;align-items:stretch;justify-content:center;padding:40px}
+.auth-panel{width:420px;background:linear-gradient(180deg,#041018,#031018);border-radius:12px;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+.robotic-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.robotic-header .led{width:12px;height:12px;background:linear-gradient(90deg,#00f6ff,#21f08a);border-radius:3px;box-shadow:0 0 12px rgba(0,246,255,0.08)}
+.auth-panel label{display:block;margin-top:8px;color:var(--muted);font-size:13px}
+.auth-panel input, .auth-panel select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#dff2ff;margin-top:6px}
+.auth-actions{display:flex;gap:8px;margin-top:14px}
+.btn.primary{background:linear-gradient(90deg,#00f6ff,#21f08a);color:#001219}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--neon)}
+
+/* profile and cards */
+.profile-grid{display:grid;grid-template-columns:1fr 360px;gap:16px}
+.card{background:linear-gradient(180deg,#02111a,#041722);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+.auth-info{width:340px;color:var(--muted);font-size:14px}
+
+/* LIGHT THEME (fallback) */
+body.light{background:#f7f9fc;color:#071022}
+body.light .sidebar{background:#fff}
+body.light .chat-window{background:#fff;color:#071022}
+body.light .message{box-shadow:0 6px 20px rgba(16,24,40,0.06)}

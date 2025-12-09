@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="app-grid">
+  <aside class="sidebar">
+    <div class="side-top">
+      <button id="new-chat-btn" class="btn neon">+ New chat</button>
+    </div>
+    <div id="chat-list" class="chat-list">
+      {% for c in chats %}
+        <div class="chat-item" data-id="{{ c.id }}">
+          <div class="title">{{ c.title }}</div>
+          <div class="meta">
+            <button class="rename-btn" data-id="{{c.id}}">Rename</button>
+            <button class="delete-btn" data-id="{{c.id}}">Delete</button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="side-footer">
+      <div class="theme-toggle">
+        <label>Theme</label>
+        <select id="theme-select">
+          <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>Dark</option>
+          <option value="light" {% if user.theme=='light' %}selected{% endif %}>Light</option>
+        </select>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="chat-header">
+      <h3 id="current-title">Select or start a chat</h3>
+    </header>
+
+    <section id="chat-window" class="chat-window">
+      <div id="messages" class="messages"></div>
+    </section>
+
+    <form id="chat-form" class="composer" autocomplete="off">
+
+  <!-- FILE UPLOAD BUTTON -->
+  <input id="file-input" type="file" hidden />
+  <button type="button" class="file-btn" onclick="document.getElementById('file-input').click()">📎</button>
+
+  <!-- MESSAGE INPUT -->
+  <textarea id="message-input" placeholder="Type a message..." rows="1"></textarea>
+
+  <!-- SEND BUTTON -->
+  <button id="send-btn" type="submit" class="send">Send</button>
+
+</form>
+
+  </main>
+</div>
+{% endblock %}

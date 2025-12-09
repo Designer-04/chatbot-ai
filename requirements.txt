@@ -1,0 +1,6 @@
+flask
+google-genai
+python-dotenv
+sqlalchemy
+flask-login
+werkzeug

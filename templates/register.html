@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-wrap">
+  <div class="auth-panel">
+    <div class="robotic-header">
+      <div class="led"></div>
+      <h2>Provision Identity</h2>
+      <p class="muted">Create your Gemini account</p>
+    </div>
+    <form method="post" action="{{ url_for('register') }}">
+      <label>Display name</label>
+      <input name="display_name" />
+      <label>Email</label>
+      <input name="email" type="email" required />
+      <label>Password</label>
+      <input name="password" type="password" required />
+      <div class="auth-actions">
+        <button type="submit" class="btn primary">Provision</button>
+        <a href="{{ url_for('login') }}" class="btn ghost">Already have one</a>
+      </div>
+    </form>
+  </div>
+  <div class="auth-info">
+    <h3>Secure Node</h3>
+    <p>Local accounts use SQLite. For production, add email verification and secure hosting.</p>
+  </div>
+</div>
+{% endblock %}
